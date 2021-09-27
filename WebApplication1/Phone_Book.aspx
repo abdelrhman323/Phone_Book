@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            height: 44px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -44,9 +49,20 @@
                 <asp:Button ID="upbtn" runat="server" Text="Update" OnClick="upbtn_Click" />
              </td>
            </tr>
-       </table>
+       
+         <tr>
+            <td class="auto-style1">
+        <asp:Label ID="IbISearch" runat="server" Text="Search"></asp:Label>
+                 </td><td class="auto-style1">
+        <asp:TextBox ID="txtSearch" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+          </td><td class="auto-style1">
+        <asp:Button ID="searchbtn" runat="server" Text="Search" OnClick="searchbtn_Click" Width="110px" />
+             </td>
+           </tr>
+
+        </table>
       </div>
-        <asp:GridView ID="gridBook" runat="server">
+                <asp:GridView ID="gridBook" runat="server">
             <Columns>
                 <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="Phone_Book.aspx?id={0}&amp;action=1" HeaderText="Delete" Text="Delete">
                 <ControlStyle ForeColor="Red" />

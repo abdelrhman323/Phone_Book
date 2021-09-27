@@ -123,5 +123,29 @@ namespace WebApplication1
             }
             con.Close();
         }
+
+
+        protected void searchbtn_Click(object sender, EventArgs e)
+        {
+            
+            cmd = new SqlCommand("select * from Phone_Book where(Name like '%' + @Name + '%' or Location like '%' + @Location + '%')", con);
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value=txtSearch.Text;
+            cmd.Parameters.Add("@Location", SqlDbType.NVarChar).Value = txtSearch.Text;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Name");
+            da.Fill(ds, "Location");
+            gridBook.DataSource = ds;
+            gridBook.DataBind();
+            con.Close();
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
